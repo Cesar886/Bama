@@ -576,7 +576,7 @@ h2.title.light{color:#fff}
   .stats-item:nth-child(3){border-top:1px solid rgba(255,255,255,.08)}
   .testi-grid{grid-template-columns:1fr}
   .cta-grid{grid-template-columns:1fr;gap:3rem}
-  .ft-grid{grid-template-columns:1fr 1fr}
+  .ft-grid{grid-template-columns:1fr 1fr;row-gap:2.5rem}
   .ft-brand{grid-column:1/-1}
   .proceso-grid{grid-template-columns:repeat(2,1fr);gap:2rem}
   .proceso-grid::before{display:none}
@@ -585,11 +585,14 @@ h2.title.light{color:#fff}
 @media(max-width:768px){
   .section{padding:4.5rem 0}
   .nav-menu{display:none}
+  .nav-cta{display:none}
   .hamburger{display:flex}
+  .hero-wrap{padding:6.5rem 0 4.5rem}
   .srv-grid,.proy-grid{grid-template-columns:1fr}
   .pq-grid{grid-template-columns:1fr 1fr}
   .stats-grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
+  .cta-form{padding:1.75rem}
   .ft-grid{grid-template-columns:1fr}
   .ft-bottom{flex-direction:column;gap:.5rem;text-align:center}
   .cta-band-inner{flex-direction:column}
@@ -598,11 +601,21 @@ h2.title.light{color:#fff}
 @media(max-width:480px){
   .pq-grid,.proceso-grid,.sectores-grid{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:1fr 1fr}
-  .stats-item{border-right:none!important;border-bottom:1px solid rgba(255,255,255,.06)}
+  .stats-item{border-right:none!important;border-bottom:1px solid rgba(255,255,255,.06);padding:.75rem .5rem}
+  .stats-num{font-size:2rem}
+  .stats-label{font-size:.74rem}
+  .stats-sub{font-size:.65rem}
+  .hero-wrap{padding:5.5rem 0 3.5rem}
   .hero-ctas{flex-direction:column}
-  .btn{justify-content:center}
+  .btn{justify-content:center;width:100%}
+  .hero-ctas .btn{width:auto}
+  .cta-band-actions{width:100%}
+  .cta-band-actions .btn{width:100%;justify-content:center}
+  .cta-form{padding:1.25rem}
   .container{padding:0 1.25rem}
   #wa-float{bottom:1.25rem;right:1.25rem;width:50px;height:50px}
+  .proy-img{height:185px}
+  .sec-header{margin-bottom:2.5rem}
 }
 @media(prefers-reduced-motion:reduce){
   .fade,*{transition-duration:.01ms!important;animation:none!important}
@@ -1102,7 +1115,7 @@ h2.title.light{color:#fff}
 <footer id="footer">
   <div class="container">
     <div class="ft-grid">
-      <div>
+      <div class="ft-brand">
         <div class="ft-logo-main">BAMA</div>
         <span class="ft-logo-sub">Proyectos y Obras Civiles</span>
         <p class="ft-tagline">Empresa constructora con presencia en Chiapas, especializada en obra civil para el sector público y privado.</p>

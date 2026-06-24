@@ -6,567 +6,1092 @@
 <title>BAMA Proyectos y Obras Civiles | Tuxtla Gutiérrez, Chiapas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ══════════════════════════════════════
+   RESET
+══════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Open Sans',sans-serif;color:#2d2d2d;background:#fff;line-height:1.6}
+body{font-family:'Open Sans',sans-serif;color:#1a1a2e;background:#fff;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none}
+button{font:inherit}
 
+/* ══════════════════════════════════════
+   TOKENS — colores más vivos
+══════════════════════════════════════ */
 :root{
-  --navy:#1a2b4a;
-  --navy-dk:#111e35;
-  --gold:#c8a84b;
-  --gold-lt:#d4b86a;
-  --white:#ffffff;
-  --gray:#f5f6f8;
-  --mid:#666;
-  --t:.3s ease;
+  /* Blue: vibrante, claramente azul */
+  --navy:    #1c3f7a;
+  --navy-dk: #0f2550;
+  --navy-md: #2a57a5;
+  --navy-lt: #dce8f8;
+  /* Gold: más saturado, menos opaco */
+  --gold:    #d4a520;
+  --gold-dk: #b08918;
+  --gold-lt: #e8c040;
+  --gold-bg: #fdf6e0;
+  /* Neutral */
+  --white:   #ffffff;
+  --off:     #f5f7fb;
+  --border:  #dde3ef;
+  --text:    #1a1a2e;
+  --muted:   #526080;
+  /* Motion */
+  --ease:    cubic-bezier(.22,.68,0,1.2);
+  --t3:      .3s ease;
 }
 
-/* ── UTILS ── */
-.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+/* ══════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════ */
+.container{max-width:1180px;margin:0 auto;padding:0 2rem}
+.section{padding:6rem 0}
+.section-sm{padding:4rem 0}
 
+/* ══════════════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════════════ */
 .eyebrow{
-  display:inline-flex;align-items:center;gap:.65rem;
+  display:inline-flex;align-items:center;gap:.6rem;
   font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;
-  letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;
 }
-.eyebrow::before{content:'';display:block;width:36px;height:2px;background:var(--gold)}
-
-h2.sec{
-  font-family:'Montserrat',sans-serif;font-size:clamp(1.7rem,4vw,2.5rem);
-  font-weight:800;color:var(--navy);line-height:1.15;margin-bottom:1.1rem;
+.eyebrow::before{content:'';display:block;width:28px;height:2px;background:var(--gold);flex-shrink:0}
+h2.title{
+  font-family:'Montserrat',sans-serif;font-size:clamp(1.9rem,3.8vw,2.75rem);
+  font-weight:800;line-height:1.12;color:var(--navy);letter-spacing:-.02em;margin-bottom:1rem;
 }
-h2.sec.light{color:#fff}
-.sec-sub{font-size:1.02rem;color:var(--mid);max-width:560px;line-height:1.75}
+h2.title.light{color:#fff}
+.subtitle{font-size:1rem;color:var(--muted);line-height:1.78;max-width:540px}
+.subtitle.light{color:rgba(255,255,255,.55);max-width:600px}
 
-.fade{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+/* ══════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════ */
+.fade{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .fade.in{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
-.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d4{transition-delay:.32s}.d5{transition-delay:.4s}.d6{transition-delay:.48s}
 
-/* ── BUTTONS ── */
-.btn-gold{
-  font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;padding:.85rem 1.9rem;
-  background:var(--gold);color:var(--navy);border:none;border-radius:2px;
-  cursor:pointer;text-decoration:none;display:inline-block;
-  transition:background var(--t),transform var(--t);
+/* ══════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;padding:.9rem 2rem;
+  border-radius:4px;border:none;cursor:pointer;
+  transition:transform .25s var(--ease),box-shadow .25s ease,background .2s,color .2s;
 }
-.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--gold);color:#fff;box-shadow:0 4px 16px rgba(212,165,32,.3)}
+.btn-primary:hover{background:var(--gold-lt);box-shadow:0 8px 28px rgba(212,165,32,.4)}
+.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-navy{background:var(--navy);color:#fff;box-shadow:0 4px 16px rgba(28,63,122,.2)}
+.btn-navy:hover{background:var(--navy-dk);box-shadow:0 8px 24px rgba(15,37,80,.3)}
+.btn-gold-outline{background:transparent;color:var(--gold);border:2px solid var(--gold)}
+.btn-gold-outline:hover{background:var(--gold);color:#fff}
 
-.btn-ghost{
-  font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;padding:.85rem 1.9rem;
-  background:transparent;color:#fff;border:2px solid rgba(255,255,255,.38);
-  border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;
-  transition:border-color var(--t),color var(--t),transform var(--t);
+/* ══════════════════════════════════════
+   SCROLL PROGRESS
+══════════════════════════════════════ */
+#progress-bar{
+  position:fixed;top:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-lt));
+  width:0;z-index:2000;transition:width .1s linear;
 }
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
-/* ── NAVBAR ── */
-#nav{
+/* ══════════════════════════════════════
+   FLOATING WHATSAPP
+══════════════════════════════════════ */
+#wa-float{
+  position:fixed;bottom:2rem;right:2rem;z-index:900;
+  width:56px;height:56px;border-radius:50%;background:#25d366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);
+  transition:transform .3s var(--ease),box-shadow .3s ease;
+  animation:wa-pulse 2.5s ease-in-out infinite;
+}
+#wa-float:hover{transform:scale(1.1);box-shadow:0 8px 28px rgba(37,211,102,.55);animation:none}
+#wa-float svg{width:28px;height:28px;fill:#fff}
+@keyframes wa-pulse{
+  0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}
+  50%{box-shadow:0 4px 30px rgba(37,211,102,.7)}
+}
+
+/* ══════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════ */
+#navbar{
   position:fixed;top:0;left:0;right:0;z-index:1000;
-  padding:1.2rem 0;transition:background var(--t),box-shadow var(--t),padding var(--t);
+  padding:1.3rem 0;transition:background .4s,box-shadow .4s,padding .4s;
 }
-#nav.solid{background:var(--navy);box-shadow:0 2px 20px rgba(0,0,0,.28);padding:.8rem 0}
+#navbar.solid{
+  background:rgba(15,37,80,.97);backdrop-filter:blur(12px);
+  box-shadow:0 1px 0 rgba(255,255,255,.07),0 4px 24px rgba(0,0,0,.35);
+  padding:.8rem 0;
+}
 .nav-in{display:flex;align-items:center;justify-content:space-between}
-
-.logo{
-  font-family:'Montserrat',sans-serif;font-size:1.7rem;font-weight:800;
-  color:var(--gold);letter-spacing:.04em;text-decoration:none;line-height:1;
+.nav-logo{display:flex;flex-direction:column;line-height:1}
+.nav-logo-main{font-family:'Montserrat',sans-serif;font-size:1.75rem;font-weight:900;color:var(--gold);letter-spacing:.04em}
+.nav-logo-sub{font-family:'Montserrat',sans-serif;font-size:.5rem;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.2em;text-transform:uppercase;margin-top:3px}
+.nav-menu{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-menu a{
+  font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.78);
+  position:relative;padding-bottom:3px;transition:color .25s;
 }
-.logo span{display:block;font-size:.52rem;font-weight:600;color:rgba(255,255,255,.6);
-  letter-spacing:.16em;text-transform:uppercase;margin-top:3px}
-
-.nav-links{display:flex;align-items:center;gap:2.1rem;list-style:none}
-.nav-links a{
-  font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:600;
-  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.82);
-  text-decoration:none;transition:color var(--t);
-}
-.nav-links a:hover{color:var(--gold)}
+.nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--gold);transition:width .3s ease}
+.nav-menu a:hover{color:var(--gold)}
+.nav-menu a:hover::after{width:100%}
 .nav-cta{
-  font-family:'Montserrat',sans-serif;font-size:.76rem;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;padding:.55rem 1.3rem;
-  background:var(--gold);color:var(--navy);border-radius:2px;text-decoration:none;
-  transition:background var(--t),transform var(--t);
+  font-family:'Montserrat',sans-serif;font-size:.74rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  background:var(--gold);color:#fff;padding:.56rem 1.5rem;border-radius:4px;
+  transition:background .25s,transform .25s,box-shadow .25s;
+  box-shadow:0 2px 10px rgba(212,165,32,.25);
 }
-.nav-cta:hover{background:var(--gold-lt);transform:translateY(-1px)}
+.nav-cta:hover{background:var(--gold-lt);transform:translateY(-1px);box-shadow:0 4px 18px rgba(212,165,32,.4)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:1010}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:var(--t3)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{
+  display:none;position:fixed;inset:0;
+  background:rgba(15,37,80,.98);flex-direction:column;align-items:center;
+  justify-content:center;gap:2.25rem;z-index:999;opacity:0;transition:opacity .3s;
+}
+.mobile-nav.open{display:flex;opacity:1}
+.mobile-nav a{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);transition:color .2s}
+.mobile-nav a:hover{color:var(--gold)}
+.mobile-nav .m-cta{background:var(--gold);color:#fff;padding:.8rem 2.5rem;border-radius:4px;margin-top:.5rem}
 
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:var(--t)}
-
-/* ── HERO ── */
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
 #hero{
-  min-height:100vh;
-  background:
-    linear-gradient(140deg,rgba(17,30,53,.97) 0%,rgba(26,43,74,.92) 65%,rgba(26,43,74,.85) 100%),
-    url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8a84b' fill-opacity='.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
-  display:flex;align-items:center;position:relative;overflow:hidden;
+  min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;
+  background:linear-gradient(145deg,var(--navy-dk) 0%,#162f6b 55%,var(--navy) 100%);
 }
-#hero::after{
-  content:'';position:absolute;bottom:-2px;left:0;right:0;height:72px;
-  background:#fff;clip-path:polygon(0 100%,100% 100%,100% 35%,0 100%);
+.hero-lines{position:absolute;inset:0;pointer-events:none}
+.hero-lines::before{
+  content:'';position:absolute;top:-30%;right:0;width:55%;height:160%;
+  background:linear-gradient(145deg,transparent 40%,rgba(255,255,255,.018) 40.5%,rgba(255,255,255,.018) 41%,transparent 41.5%,transparent 55%,rgba(255,255,255,.015) 55.5%,rgba(255,255,255,.015) 56%,transparent 56.5%);
+  transform:skewX(-12deg);
 }
-.hero-content{padding:7.5rem 0 5.5rem;max-width:740px;position:relative;z-index:1}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:.75rem;
+.hero-lines::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:80px;
+  background:#fff;clip-path:polygon(0 100%,100% 100%,100% 20%,0 100%);
+}
+.hero-glow{
+  position:absolute;top:-20%;right:-5%;width:60vw;height:60vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(42,87,165,.35) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-wrap{
+  display:grid;grid-template-columns:1fr 320px;gap:3.5rem;align-items:center;
+  padding:9rem 0 7rem;width:100%;position:relative;z-index:1;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.7rem;
   font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;
-  letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.75rem;
 }
-.hero-tag::before{content:'';display:block;width:38px;height:2px;background:var(--gold)}
+.hero-eyebrow::before{content:'';display:block;width:36px;height:1.5px;background:var(--gold)}
 .hero-h1{
-  font-family:'Montserrat',sans-serif;font-size:clamp(2.1rem,5.5vw,3.8rem);
-  font-weight:800;color:#fff;line-height:1.1;margin-bottom:1.4rem;letter-spacing:-.01em;
+  font-family:'Montserrat',sans-serif;font-size:clamp(2.4rem,5.5vw,4.25rem);
+  font-weight:900;color:#fff;line-height:1.08;letter-spacing:-.025em;margin-bottom:1.5rem;
 }
-.hero-h1 em{font-style:normal;color:var(--gold)}
-.hero-p{font-size:clamp(.95rem,1.8vw,1.12rem);color:rgba(255,255,255,.68);max-width:500px;line-height:1.78;margin-bottom:2.5rem}
+.hero-h1 .hl{
+  color:var(--gold-lt);position:relative;display:inline-block;
+}
+.hero-h1 .hl::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);opacity:.5;
+}
+.hero-p{font-size:clamp(.95rem,1.5vw,1.1rem);color:rgba(255,255,255,.65);line-height:1.8;max-width:480px;margin-bottom:2.5rem}
 .hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap}
-.hero-stats{
-  display:flex;gap:2.75rem;margin-top:3.75rem;padding-top:1.75rem;
-  border-top:1px solid rgba(255,255,255,.12);
-}
-.stat-n{font-family:'Montserrat',sans-serif;font-size:1.9rem;font-weight:800;color:var(--gold);line-height:1}
-.stat-l{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
 
-/* ── NOSOTROS ── */
-#nosotros{padding:6rem 0;background:#fff}
-.nos-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.nos-text p{color:var(--mid);line-height:1.8;margin-bottom:.9rem}
-.nos-cards{display:flex;flex-direction:column;gap:1.1rem}
-.valor{
-  display:flex;align-items:flex-start;gap:1.2rem;padding:1.4rem 1.5rem;
-  border-left:3px solid var(--gold);background:var(--gray);border-radius:0 4px 4px 0;
-  transition:transform var(--t),box-shadow var(--t);
+.hero-panel{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-top:3px solid var(--gold);border-radius:6px;
+  padding:1.75rem;backdrop-filter:blur(6px);
 }
-.valor:hover{transform:translateX(4px);box-shadow:4px 4px 18px rgba(26,43,74,.08)}
-.ico{
-  width:42px;height:42px;background:var(--navy);border-radius:3px;
+.hero-panel-lbl{
+  font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:1.4rem;
+}
+.stat-row{padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.stat-row:last-child{border-bottom:none;padding-bottom:0}
+.stat-row:first-of-type{padding-top:0}
+.stat-number{font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;color:var(--gold-lt);line-height:1;letter-spacing:-.03em}
+.stat-label{font-size:.78rem;color:rgba(255,255,255,.45);margin-top:.28rem;letter-spacing:.02em}
+
+/* ══════════════════════════════════════
+   NOSOTROS
+══════════════════════════════════════ */
+#nosotros{background:#fff}
+.nos-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.nos-body{color:var(--muted);line-height:1.82;font-size:.96rem;margin-top:.5rem}
+.nos-body p+p{margin-top:.9rem}
+.nos-divider{width:44px;height:3px;background:var(--gold);margin:1.75rem 0}
+.val-list{display:flex;flex-direction:column;gap:.85rem}
+.val-item{
+  display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:flex-start;
+  padding:1.35rem 1.5rem;background:var(--off);border-radius:6px;
+  border-left:3px solid transparent;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+}
+.val-item:hover{border-color:var(--gold);transform:translateX(4px);box-shadow:2px 4px 18px rgba(28,63,122,.08)}
+.val-ico{width:40px;height:40px;background:var(--navy);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.val-ico svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.val-title{font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.25rem}
+.val-desc{font-size:.84rem;color:var(--muted);line-height:1.6}
+
+/* ══════════════════════════════════════
+   PROCESO DE TRABAJO  ← NUEVA
+══════════════════════════════════════ */
+#proceso{background:var(--navy);position:relative;overflow:hidden}
+#proceso::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+.proceso-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:1}
+/* Connector line */
+.proceso-grid::before{
+  content:'';position:absolute;top:2.85rem;left:calc(12.5% + 1.5rem);right:calc(12.5% + 1.5rem);
+  height:1px;background:linear-gradient(90deg,transparent,var(--gold) 15%,var(--gold) 85%,transparent);
+  opacity:.35;
+}
+.proceso-step{text-align:center;padding:0 1.25rem 0}
+.step-circle{
+  width:56px;height:56px;border-radius:50%;background:transparent;
+  border:2px solid rgba(212,165,32,.4);display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.25rem;position:relative;z-index:1;
+  transition:background .3s,border-color .3s;
+}
+.proceso-step:hover .step-circle{background:rgba(212,165,32,.12);border-color:var(--gold)}
+.step-circle svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.step-num{
+  position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;
+  background:var(--gold);font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;
+  color:#fff;display:flex;align-items:center;justify-content:center;
+}
+.step-title{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+.step-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.65}
+
+/* ══════════════════════════════════════
+   SERVICIOS
+══════════════════════════════════════ */
+#servicios{background:var(--off)}
+.sec-header{margin-bottom:3.25rem}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.srv-card{
+  background:#fff;border-radius:6px;padding:2rem 1.75rem;
+  border-top:3px solid var(--border);position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+}
+.srv-card:hover{border-color:var(--gold);transform:translateY(-5px);box-shadow:0 16px 40px rgba(28,63,122,.1)}
+.srv-num{
+  position:absolute;top:1rem;right:1.25rem;font-family:'Montserrat',sans-serif;
+  font-size:3.5rem;font-weight:900;color:var(--navy);opacity:.04;
+  line-height:1;user-select:none;pointer-events:none;
+}
+.srv-ico{width:48px;height:48px;background:var(--navy);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
+.srv-ico svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.srv-title{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.55rem}
+.srv-desc{font-size:.84rem;color:var(--muted);line-height:1.68}
+
+/* ══════════════════════════════════════
+   SECTORES  ← NUEVA
+══════════════════════════════════════ */
+#sectores{background:#fff}
+.sectores-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.sector-card{
+  display:flex;align-items:center;gap:1.1rem;
+  padding:1.5rem 1.6rem;border:1.5px solid var(--border);border-radius:8px;
+  transition:border-color .3s,transform .3s,box-shadow .3s,background .3s;
+  cursor:default;
+}
+.sector-card:hover{
+  border-color:var(--navy);background:var(--navy);transform:translateY(-3px);
+  box-shadow:0 10px 28px rgba(28,63,122,.18);
+}
+.sector-ico{
+  width:48px;height:48px;border-radius:8px;background:var(--navy-lt);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background .3s;
 }
-.ico svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.valor h3{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
-.valor p{font-size:.85rem;color:var(--mid);line-height:1.6}
+.sector-card:hover .sector-ico{background:rgba(255,255,255,.15)}
+.sector-ico svg{width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.sector-card:hover .sector-ico svg{stroke:var(--gold)}
+.sector-name{font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:700;color:var(--navy);transition:color .3s;line-height:1.3}
+.sector-card:hover .sector-name{color:#fff}
+.sector-sub{font-size:.78rem;color:var(--muted);margin-top:.15rem;transition:color .3s}
+.sector-card:hover .sector-sub{color:rgba(255,255,255,.55)}
 
-/* ── SERVICIOS ── */
-#servicios{padding:6rem 0;background:var(--gray)}
-.sec-head{margin-bottom:3.25rem}
-.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-.srv{
-  background:#fff;padding:1.85rem 1.65rem;border-radius:4px;
-  border-bottom:3px solid transparent;
-  transition:border-color var(--t),transform var(--t),box-shadow var(--t);
+/* ══════════════════════════════════════
+   PROYECTOS
+══════════════════════════════════════ */
+#proyectos{background:var(--off)}
+.proy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+.proy-card{
+  border-radius:8px;overflow:hidden;background:#fff;
+  box-shadow:0 2px 14px rgba(28,63,122,.07);
+  transition:transform .35s ease,box-shadow .35s ease;
 }
-.srv:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 30px rgba(26,43,74,.1)}
-.srv-ico{
-  width:50px;height:50px;background:var(--navy);border-radius:3px;
-  display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;
-}
-.srv-ico svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
-.srv h3{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.55rem}
-.srv p{font-size:.84rem;color:var(--mid);line-height:1.65}
-
-/* ── PROYECTOS ── */
-#proyectos{padding:6rem 0;background:#fff}
-.proy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
-.proy{border-radius:4px;overflow:hidden;box-shadow:0 4px 18px rgba(26,43,74,.07);transition:transform var(--t),box-shadow var(--t)}
-.proy:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(26,43,74,.14)}
-.proy-img{height:215px;position:relative;overflow:hidden}
-.proy-img.a{background:linear-gradient(135deg,#1a2b4a 0%,#243755 55%,#2d4470 100%)}
-.proy-img.b{background:linear-gradient(135deg,#111e35 0%,#1a2b4a 55%,#1f3358 100%)}
-.proy-img.c{background:linear-gradient(135deg,#1d3060 0%,#1a2b4a 55%,#152340 100%)}
+.proy-card:hover{transform:translateY(-7px);box-shadow:0 22px 50px rgba(28,63,122,.16)}
+.proy-img{height:225px;position:relative;overflow:hidden}
+.proy-img.c1{background:linear-gradient(145deg,#0f2550 0%,#1c3f7a 60%,#2155a0 100%)}
+.proy-img.c2{background:linear-gradient(145deg,#162a60 0%,#1e3870 60%,#2a4f90 100%)}
+.proy-img.c3{background:linear-gradient(145deg,#0d2248 0%,#1a3570 60%,#1f4585 100%)}
 .proy-img::before{
   content:'';position:absolute;inset:0;
-  background-image:linear-gradient(rgba(200,168,75,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,.1) 1px,transparent 1px);
-  background-size:22px 22px;
+  background-image:linear-gradient(rgba(212,165,32,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(212,165,32,.07) 1px,transparent 1px);
+  background-size:26px 26px;
 }
-.proy-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold)}
-.proy-yr{
-  position:absolute;top:.85rem;right:.85rem;
-  font-family:'Montserrat',sans-serif;font-size:.67rem;font-weight:700;
-  letter-spacing:.14em;color:var(--gold);background:rgba(17,30,53,.85);
-  padding:.28rem .7rem;border-radius:2px;
+.proy-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,37,80,.88) 0%,transparent 55%);
+  opacity:0;transition:opacity .35s;
+  display:flex;align-items:flex-end;padding:1.5rem;
 }
-.proy-ghost{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.12}
-.proy-ghost svg{width:76px;height:76px;stroke:var(--gold);fill:none;stroke-width:1}
-.proy-body{padding:1.4rem 1.5rem;background:#fff}
-.proy-body h3{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.45rem;line-height:1.35}
-.proy-body p{font-size:.83rem;color:var(--mid);line-height:1.6}
+.proy-card:hover .proy-overlay{opacity:1}
+.proy-overlay-txt{
+  font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt);
+  display:flex;align-items:center;gap:.5rem;
+}
+.proy-overlay-txt::after{content:'';display:block;width:20px;height:1.5px;background:var(--gold-lt)}
+.proy-ghost{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.1}
+.proy-ghost svg{width:72px;height:72px;stroke:var(--gold);fill:none;stroke-width:.75}
+.proy-badge{
+  position:absolute;top:1rem;right:1rem;
+  font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.14em;color:var(--gold-lt);
+  background:rgba(15,37,80,.88);padding:.28rem .7rem;border-radius:3px;
+  border:1px solid rgba(212,165,32,.3);
+}
+.proy-body{padding:1.4rem 1.5rem}
+.proy-tag{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.proy-name{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.45rem;line-height:1.35}
+.proy-desc{font-size:.83rem;color:var(--muted);line-height:1.65}
 
-/* ── PORQUE ── */
-#porque{padding:6rem 0;background:var(--navy);position:relative;overflow:hidden}
-#porque::before{
+/* ══════════════════════════════════════
+   STATS BAND  ← NUEVA
+══════════════════════════════════════ */
+#stats-band{
+  background:linear-gradient(135deg,var(--navy-dk) 0%,var(--navy) 100%);
+  padding:4.5rem 0;position:relative;overflow:hidden;
+}
+#stats-band::before{
   content:'';position:absolute;inset:0;
-  background-image:linear-gradient(rgba(200,168,75,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,.04) 1px,transparent 1px);
-  background-size:38px 38px;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:44px 44px;
 }
-.pq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.75rem;position:relative;z-index:1}
-.pq{text-align:center;padding:1.85rem 1.1rem}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:1}
+.stats-item{
+  text-align:center;padding:1rem 2rem;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+.stats-item:last-child{border-right:none}
+.stats-num{
+  font-family:'Montserrat',sans-serif;font-size:3rem;font-weight:900;
+  color:var(--gold-lt);line-height:1;letter-spacing:-.03em;
+}
+.stats-label{font-size:.82rem;color:rgba(255,255,255,.5);margin-top:.4rem;letter-spacing:.03em}
+.stats-sub{font-size:.72rem;color:rgba(255,255,255,.28);margin-top:.15rem}
+
+/* ══════════════════════════════════════
+   CTA BANNER  ← NUEVA
+══════════════════════════════════════ */
+#cta-band{background:var(--gold-bg);border-top:1px solid rgba(212,165,32,.2);border-bottom:1px solid rgba(212,165,32,.2);padding:4rem 0}
+.cta-band-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.cta-band-text h3{font-family:'Montserrat',sans-serif;font-size:clamp(1.3rem,2.5vw,1.85rem);font-weight:800;color:var(--navy);margin-bottom:.4rem;line-height:1.2}
+.cta-band-text p{font-size:.94rem;color:var(--muted);max-width:480px}
+.cta-band-actions{display:flex;gap:1rem;flex-shrink:0;flex-wrap:wrap}
+
+/* ══════════════════════════════════════
+   POR QUÉ ELEGIRNOS
+══════════════════════════════════════ */
+#porque{background:var(--off)}
+.pq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.pq-card{
+  padding:2.25rem 1.5rem 2rem;background:#fff;border-radius:8px;
+  border:1.5px solid var(--border);
+  transition:background .3s,border-color .3s,transform .3s,box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.pq-card:hover{background:var(--navy);border-color:var(--navy);transform:translateY(-4px);box-shadow:0 16px 40px rgba(28,63,122,.18)}
+.pq-num{
+  font-family:'Montserrat',sans-serif;font-size:5rem;font-weight:900;
+  color:var(--navy);opacity:.05;line-height:1;margin-bottom:-.5rem;letter-spacing:-.05em;
+  transition:color .3s,opacity .3s;
+}
+.pq-card:hover .pq-num{color:#fff;opacity:.06}
 .pq-ico{
-  width:62px;height:62px;border:2px solid var(--gold);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;
+  width:50px;height:50px;border:1.5px solid var(--border);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;
+  transition:border-color .3s,background .3s;
 }
-.pq-ico svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
-.pq h3{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.55rem}
-.pq p{font-size:.83rem;color:rgba(255,255,255,.52);line-height:1.65}
+.pq-card:hover .pq-ico{border-color:var(--gold);background:rgba(212,165,32,.12)}
+.pq-ico svg{width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.pq-card:hover .pq-ico svg{stroke:var(--gold)}
+.pq-title{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.55rem;line-height:1.3;transition:color .3s}
+.pq-card:hover .pq-title{color:#fff}
+.pq-text{font-size:.83rem;color:var(--muted);line-height:1.68;transition:color .3s}
+.pq-card:hover .pq-text{color:rgba(255,255,255,.55)}
 
-/* ── CONTACTO ── */
-#contacto{padding:6rem 0;background:var(--gray)}
-.cta-grid{display:grid;grid-template-columns:1fr 1.45fr;gap:4rem;align-items:start}
-.cta-info h3{font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:1.85rem}
-.info-row{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.4rem}
-.i-ico{
-  width:38px;height:38px;background:var(--navy);border-radius:3px;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+/* ══════════════════════════════════════
+   TESTIMONIOS  ← NUEVA
+══════════════════════════════════════ */
+#testimonios{background:var(--navy);position:relative;overflow:hidden}
+#testimonios::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:40px 40px;
 }
-.i-ico svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.i-txt strong{display:block;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:.22rem}
-.i-txt span{font-size:.88rem;color:var(--mid)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;position:relative;z-index:1}
+.testi-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;padding:2rem 1.75rem;
+  transition:background .3s,border-color .3s,transform .3s;
+}
+.testi-card:hover{background:rgba(255,255,255,.08);border-color:rgba(212,165,32,.3);transform:translateY(-3px)}
+.testi-stars{display:flex;gap:3px;margin-bottom:1.1rem}
+.testi-stars span{color:var(--gold);font-size:1rem}
+.testi-quote{
+  font-size:.9rem;color:rgba(255,255,255,.72);line-height:1.75;
+  margin-bottom:1.5rem;font-style:italic;
+}
+.testi-quote::before{
+  content:'\201C';font-size:2.5rem;color:var(--gold);line-height:0;vertical-align:-.5rem;
+  margin-right:.15rem;font-style:normal;opacity:.6;
+}
+.testi-author{display:flex;align-items:center;gap:.9rem}
+.testi-avatar{
+  width:40px;height:40px;border-radius:50%;background:var(--navy-md);
+  border:2px solid rgba(212,165,32,.35);display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:700;color:var(--gold-lt);flex-shrink:0;
+}
+.testi-name{font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;color:#fff}
+.testi-role{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.1rem}
 
+/* ══════════════════════════════════════
+   CONTACTO
+══════════════════════════════════════ */
+#contacto{background:var(--off)}
+.cta-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:4.5rem;align-items:start}
+.cta-info-title{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:2rem}
+.info-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.5rem}
+.info-ico{width:38px;height:38px;background:var(--navy);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-ico svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.info-lbl{font-family:'Montserrat',sans-serif;font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.2rem}
+.info-val{font-size:.9rem;color:var(--muted);line-height:1.55}
+.divider-h{width:100%;height:1px;background:var(--border);margin:1.75rem 0}
 .btn-wa{
   display:flex;align-items:center;justify-content:center;gap:.7rem;
-  width:100%;padding:.95rem 1.4rem;background:#25d366;color:#fff;
-  font-family:'Montserrat',sans-serif;font-size:.86rem;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
-  border-radius:3px;margin-top:2rem;transition:background var(--t),transform var(--t);
+  width:100%;padding:1rem;background:#25d366;color:#fff;border-radius:6px;
+  font-family:'Montserrat',sans-serif;font-size:.84rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  transition:background .25s,transform .25s var(--ease),box-shadow .25s;
+  box-shadow:0 4px 14px rgba(37,211,102,.25);
 }
-.btn-wa:hover{background:#1da851;transform:translateY(-2px)}
-.btn-wa svg{width:21px;height:21px;fill:currentColor;flex-shrink:0}
-
-.cta-form{background:#fff;padding:2.4rem;border-radius:4px;box-shadow:0 4px 22px rgba(26,43,74,.07)}
-.cta-form h3{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:1.65rem}
-.fg{margin-bottom:1.15rem}
-.fg label{display:block;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:.45rem}
+.btn-wa:hover{background:#1db954;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.35)}
+.btn-wa svg{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+.cta-form{
+  background:#fff;padding:2.5rem;border-radius:8px;
+  box-shadow:0 4px 30px rgba(28,63,122,.08);border-top:3px solid var(--gold);
+}
+.form-title{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:.4rem}
+.form-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.75rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1.1rem}
+.fg label{display:block;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:.42rem}
 .fg input,.fg textarea{
-  width:100%;padding:.82rem .95rem;border:1.5px solid #dde1e8;border-radius:2px;
-  font-family:'Open Sans',sans-serif;font-size:.88rem;color:#2d2d2d;
-  background:#fff;outline:none;transition:border-color var(--t);
+  width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:4px;
+  font-family:'Open Sans',sans-serif;font-size:.9rem;color:var(--text);background:var(--off);
+  outline:none;transition:border-color .25s,background .25s,box-shadow .25s;
 }
-.fg input:focus,.fg textarea:focus{border-color:var(--gold)}
-.fg textarea{resize:vertical;min-height:125px}
-.btn-send{
-  width:100%;padding:.95rem;background:var(--navy);color:#fff;
+.fg input:focus,.fg textarea:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(212,165,32,.12)}
+.fg textarea{resize:vertical;min-height:110px}
+.btn-submit{
+  width:100%;padding:.95rem;background:var(--navy);color:#fff;border:none;border-radius:4px;
   font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:2px;
-  cursor:pointer;transition:background var(--t),transform var(--t);
+  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+  transition:background .25s,transform .25s var(--ease),box-shadow .25s;
 }
-.btn-send:hover{background:var(--navy-dk);transform:translateY(-2px)}
+.btn-submit:hover{background:var(--navy-dk);transform:translateY(-2px);box-shadow:0 8px 20px rgba(15,37,80,.3)}
+.btn-submit:disabled{opacity:.65;transform:none;cursor:not-allowed}
 
-/* ── FOOTER ── */
-#footer{background:var(--navy-dk);padding:3.5rem 0 1.75rem}
-.ft-top{
-  display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;
-  padding-bottom:2.25rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1.75rem;
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+#footer{background:var(--navy-dk);padding:4rem 0 2rem}
+.ft-grid{
+  display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:3.5rem;
+  padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:2rem;
 }
-.ft-brand p{font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.72;max-width:275px;margin-top:.85rem}
-.ft-col h4{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
-.ft-col ul{list-style:none}
-.ft-col li{margin-bottom:.55rem}
-.ft-col a{font-size:.84rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color var(--t)}
-.ft-col a:hover{color:var(--gold)}
-
-.socials{display:flex;gap:.65rem;margin-top:1.2rem}
-.sl{
-  width:34px;height:34px;border:1px solid rgba(255,255,255,.18);border-radius:3px;
+.ft-logo-main{font-family:'Montserrat',sans-serif;font-size:1.75rem;font-weight:900;color:var(--gold);letter-spacing:.04em}
+.ft-logo-sub{font-family:'Montserrat',sans-serif;font-size:.5rem;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:.2em;text-transform:uppercase;margin-top:3px;display:block}
+.ft-tagline{font-size:.84rem;color:rgba(255,255,255,.38);line-height:1.75;max-width:280px;margin-top:1.1rem}
+.ft-socials{display:flex;gap:.6rem;margin-top:1.5rem}
+.ft-social{
+  width:34px;height:34px;border:1px solid rgba(255,255,255,.15);border-radius:4px;
   display:flex;align-items:center;justify-content:center;
-  transition:border-color var(--t),background var(--t);
+  transition:border-color .25s,background .25s;
 }
-.sl:hover{border-color:var(--gold);background:rgba(200,168,75,.1)}
-.sl svg{width:15px;height:15px;transition:var(--t)}
-.sl:hover svg{stroke:var(--gold)}
+.ft-social:hover{border-color:var(--gold);background:rgba(212,165,32,.1)}
+.ft-social svg{width:15px;height:15px;stroke:rgba(255,255,255,.45);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .25s}
+.ft-social:hover svg{stroke:var(--gold)}
+.ft-col h4{font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.ft-col a{font-size:.84rem;color:rgba(255,255,255,.42);transition:color .25s}
+.ft-col a:hover{color:rgba(255,255,255,.82)}
+.ft-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.25)}
 
-.ft-bot{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.28)}
-
-/* ── RESPONSIVE ── */
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
 @media(max-width:1024px){
+  .hero-wrap{grid-template-columns:1fr}
+  .hero-panel{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:1.5rem}
+  .hero-panel-lbl{display:none}
+  .stat-row{border-bottom:none;border-right:1px solid rgba(255,255,255,.07);padding:.5rem 1.25rem}
+  .stat-row:last-child{border-right:none}
+  .stat-number{font-size:2rem}
+  .nos-grid{grid-template-columns:1fr;gap:3rem}
   .srv-grid{grid-template-columns:repeat(2,1fr)}
   .proy-grid{grid-template-columns:repeat(2,1fr)}
   .pq-grid{grid-template-columns:repeat(2,1fr)}
-  .nos-grid{grid-template-columns:1fr;gap:3rem}
-  .ft-top{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-item:nth-child(2){border-right:none}
+  .stats-item:nth-child(3){border-top:1px solid rgba(255,255,255,.08)}
+  .testi-grid{grid-template-columns:1fr}
+  .cta-grid{grid-template-columns:1fr;gap:3rem}
+  .ft-grid{grid-template-columns:1fr 1fr}
   .ft-brand{grid-column:1/-1}
+  .proceso-grid{grid-template-columns:repeat(2,1fr);gap:2rem}
+  .proceso-grid::before{display:none}
+  .sectores-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
-  .nav-links{display:none}
+  .section{padding:4.5rem 0}
+  .nav-menu{display:none}
   .hamburger{display:flex}
-  .nav-links.open{
-    display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;
-    background:var(--navy-dk);align-items:center;justify-content:center;gap:2rem;z-index:999;
-  }
-  .nav-links.open a{font-size:1.05rem}
-  .nav-links.open .nav-cta{font-size:1rem;padding:.75rem 2rem}
   .srv-grid,.proy-grid{grid-template-columns:1fr}
-  .cta-grid{grid-template-columns:1fr}
-  .ft-top{grid-template-columns:1fr}
-  .hero-stats{gap:1.4rem}
-  .stat-n{font-size:1.6rem}
-  .ft-bot{flex-direction:column;gap:.4rem;text-align:center}
+  .pq-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .ft-bottom{flex-direction:column;gap:.5rem;text-align:center}
+  .cta-band-inner{flex-direction:column}
+  .proceso-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:480px){
-  .pq-grid{grid-template-columns:1fr}
+  .pq-grid,.proceso-grid,.sectores-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stats-item{border-right:none!important;border-bottom:1px solid rgba(255,255,255,.06)}
   .hero-ctas{flex-direction:column}
-  .btn-gold,.btn-ghost{text-align:center}
+  .btn{justify-content:center}
+  .container{padding:0 1.25rem}
+  #wa-float{bottom:1.25rem;right:1.25rem;width:50px;height:50px}
 }
 @media(prefers-reduced-motion:reduce){
-  .fade{opacity:1;transform:none;transition:none}
-  *{transition-duration:.01ms !important}
+  .fade,*{transition-duration:.01ms!important;animation:none!important}
+  .fade{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 
+<div id="progress-bar"></div>
+
+<a href="https://wa.me/529611210362" target="_blank" rel="noopener" id="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <!-- NAVBAR -->
-<nav id="nav">
+<nav id="navbar">
   <div class="container">
     <div class="nav-in">
-      <a href="#hero" class="logo">BAMA<span>Proyectos y Obras Civiles</span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#hero"      onclick="closeNav()">Inicio</a></li>
-        <li><a href="#nosotros"  onclick="closeNav()">Nosotros</a></li>
-        <li><a href="#servicios" onclick="closeNav()">Servicios</a></li>
-        <li><a href="#proyectos" onclick="closeNav()">Proyectos</a></li>
-        <li><a href="#contacto"  onclick="closeNav()">Contacto</a></li>
-        <li><a href="#contacto"  class="nav-cta" onclick="closeNav()">Contáctanos</a></li>
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-main">BAMA</span>
+        <span class="nav-logo-sub">Proyectos y Obras Civiles</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
-      <button class="hamburger" id="ham" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="#contacto" class="nav-cta">Contáctanos</a>
+      <button class="hamburger" id="ham" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
 
+<div class="mobile-nav" id="mobileNav">
+  <a href="#hero"      onclick="closeNav()">Inicio</a>
+  <a href="#nosotros"  onclick="closeNav()">Nosotros</a>
+  <a href="#servicios" onclick="closeNav()">Servicios</a>
+  <a href="#proyectos" onclick="closeNav()">Proyectos</a>
+  <a href="#contacto"  onclick="closeNav()">Contacto</a>
+  <a href="#contacto"  class="m-cta" onclick="closeNav()">Contáctanos</a>
+</div>
+
 <!-- HERO -->
 <section id="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-tag fade">Tuxtla Gutiérrez, Chiapas</div>
-      <h1 class="hero-h1 fade d1">Construimos con<br><em>calidad</em> y compromiso</h1>
-      <p class="hero-p fade d2">Más de 10 años desarrollando proyectos de obra civil en Chiapas, con excelencia técnica y cumplimiento puntual en cada etapa.</p>
-      <div class="hero-ctas fade d3">
-        <a href="#proyectos" class="btn-gold">Ver proyectos</a>
-        <a href="#contacto"  class="btn-ghost">Solicitar cotización</a>
+  <div class="hero-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="container" style="width:100%;position:relative;z-index:1">
+    <div class="hero-wrap">
+      <div>
+        <div class="hero-eyebrow fade">Tuxtla Gutiérrez, Chiapas · México</div>
+        <h1 class="hero-h1 fade d1">Construimos con<br><span class="hl">calidad</span><br>y compromiso</h1>
+        <p class="hero-p fade d2">Más de 10 años desarrollando infraestructura de alto estándar en Chiapas — para el sector público y privado.</p>
+        <div class="hero-ctas fade d3">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+          <a href="#contacto"  class="btn btn-outline">Solicitar cotización</a>
+        </div>
       </div>
-      <div class="hero-stats fade d4">
-        <div><div class="stat-n">+10</div><div class="stat-l">Años de experiencia</div></div>
-        <div><div class="stat-n">+80</div><div class="stat-l">Proyectos concluidos</div></div>
-        <div><div class="stat-n">100%</div><div class="stat-l">Compromiso</div></div>
+      <div class="hero-panel fade d2">
+        <div class="hero-panel-lbl">Nuestra trayectoria</div>
+        <div class="stat-row">
+          <div class="stat-number"><span class="counter" data-target="10">0</span>+</div>
+          <div class="stat-label">Años de experiencia</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-number"><span class="counter" data-target="80">0</span>+</div>
+          <div class="stat-label">Proyectos concluidos</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-number"><span class="counter" data-target="100">0</span>%</div>
+          <div class="stat-label">Compromiso en cada obra</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- NOSOTROS -->
-<section id="nosotros">
+<section id="nosotros" class="section">
   <div class="container">
     <div class="nos-grid">
-      <div class="nos-text">
+      <div>
         <span class="eyebrow fade">Quiénes somos</span>
-        <h2 class="sec fade d1">Una empresa comprometida con Chiapas</h2>
-        <p class="fade d2">BAMA Proyectos y Obras Civiles es una empresa constructora con más de una década de experiencia en el desarrollo de infraestructura pública y privada en el estado de Chiapas.</p>
-        <p class="fade d3">Contamos con ingenieros, arquitectos y técnicos especializados, comprometidos con la entrega de proyectos de alto estándar dentro de los plazos y presupuestos acordados.</p>
-        <p class="fade d4">Nuestra trayectoria en licitaciones de gobierno y proyectos privados nos permite adaptarnos a las necesidades específicas de cada cliente, garantizando transparencia y resultados verificables.</p>
+        <h2 class="title fade d1">Una empresa comprometida con Chiapas</h2>
+        <div class="nos-divider fade d2"></div>
+        <div class="nos-body fade d3">
+          <p>BAMA Proyectos y Obras Civiles es una empresa constructora con más de una década de experiencia en el desarrollo de infraestructura pública y privada en el estado de Chiapas.</p>
+          <p>Contamos con un equipo de ingenieros, arquitectos y técnicos especializados, comprometidos con la entrega de proyectos de alto estándar dentro de los plazos y presupuestos acordados.</p>
+          <p>Nuestra experiencia en licitaciones públicas y proyectos privados nos permite adaptarnos a cada cliente, garantizando transparencia total y resultados verificables.</p>
+        </div>
+        <a href="#contacto" class="btn btn-navy fade d4" style="margin-top:2rem">Solicitar información</a>
       </div>
-      <div class="nos-cards">
-        <div class="valor fade d1">
-          <div class="ico">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
+      <div class="val-list">
+        <div class="val-item fade d1">
+          <div class="val-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
           <div>
-            <h3>Experiencia comprobada</h3>
-            <p>Más de 10 años ejecutando proyectos de obra civil en Chiapas, con historial sólido en licitaciones públicas y contratos privados.</p>
+            <div class="val-title">Experiencia comprobada</div>
+            <div class="val-desc">Más de 10 años ejecutando obra civil en Chiapas, con historial sólido en licitaciones públicas y contratos privados de alto valor.</div>
           </div>
         </div>
-        <div class="valor fade d2">
-          <div class="ico">
-            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-          </div>
+        <div class="val-item fade d2">
+          <div class="val-ico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
           <div>
-            <h3>Estándares de calidad</h3>
-            <p>Materiales certificados y procesos supervisados para garantizar obras duraderas conforme a normativa técnica vigente.</p>
+            <div class="val-title">Estándares de calidad</div>
+            <div class="val-desc">Materiales certificados, procesos supervisados y control de calidad en cada fase de la obra para garantizar resultados duraderos.</div>
           </div>
         </div>
-        <div class="valor fade d3">
-          <div class="ico">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
+        <div class="val-item fade d3">
+          <div class="val-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div>
-            <h3>Compromiso con el cliente</h3>
-            <p>Comunicación clara, reportes periódicos y cumplimiento de plazos. Su satisfacción es el criterio de éxito de cada obra.</p>
+            <div class="val-title">Compromiso con el cliente</div>
+            <div class="val-desc">Comunicación directa, reportes periódicos y seguimiento puntual. Su satisfacción es el criterio de éxito de cada proyecto.</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO DE TRABAJO -->
+<section id="proceso" class="section">
+  <div class="container">
+    <div class="sec-header" style="text-align:center;margin-bottom:4rem">
+      <span class="eyebrow fade" style="justify-content:center">Metodología</span>
+      <h2 class="title light fade d1" style="text-align:center;max-width:500px;margin:0 auto .9rem">Cómo trabajamos</h2>
+      <p class="subtitle light fade d2" style="text-align:center;margin:0 auto">Un proceso claro y transparente desde la consulta inicial hasta la entrega final.</p>
+    </div>
+    <div class="proceso-grid">
+      <div class="proceso-step fade d1">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="step-num">1</span>
+        </div>
+        <div class="step-title">Consulta inicial</div>
+        <div class="step-desc">Escuchamos sus necesidades, revisamos el sitio y definimos el alcance del proyecto sin compromiso.</div>
+      </div>
+      <div class="proceso-step fade d2">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="step-num">2</span>
+        </div>
+        <div class="step-title">Propuesta técnica</div>
+        <div class="step-desc">Elaboramos el proyecto ejecutivo, presupuesto detallado y programa de obra con fechas comprometidas.</div>
+      </div>
+      <div class="proceso-step fade d3">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+          <span class="step-num">3</span>
+        </div>
+        <div class="step-title">Ejecución de obra</div>
+        <div class="step-desc">Iniciamos con personal calificado y materiales certificados. Reportes de avance semanales y supervisión continua.</div>
+      </div>
+      <div class="proceso-step fade d4">
+        <div class="step-circle">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
+          <span class="step-num">4</span>
+        </div>
+        <div class="step-title">Entrega y garantía</div>
+        <div class="step-desc">Finiquitamos con acta de entrega, expediente completo y garantía de obra según el tipo de trabajo realizado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section id="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stats-item fade d1">
+        <div class="stats-num"><span class="counter" data-target="10">0</span>+</div>
+        <div class="stats-label">Años de experiencia</div>
+        <div class="stats-sub">en Chiapas</div>
+      </div>
+      <div class="stats-item fade d2">
+        <div class="stats-num"><span class="counter" data-target="80">0</span>+</div>
+        <div class="stats-label">Proyectos concluidos</div>
+        <div class="stats-sub">público y privado</div>
+      </div>
+      <div class="stats-item fade d3">
+        <div class="stats-num"><span class="counter" data-target="25">0</span>+</div>
+        <div class="stats-label">Clientes satisfechos</div>
+        <div class="stats-sub">en toda la región</div>
+      </div>
+      <div class="stats-item fade d4">
+        <div class="stats-num"><span class="counter" data-target="15">0</span>+</div>
+        <div class="stats-label">Licitaciones ganadas</div>
+        <div class="stats-sub">sector gubernamental</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SERVICIOS -->
-<section id="servicios">
+<section id="servicios" class="section">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-header">
       <span class="eyebrow fade">Lo que hacemos</span>
-      <h2 class="sec fade d1">Nuestros servicios</h2>
-      <p class="sec-sub fade d2">Soluciones integrales en construcción, rehabilitación y supervisión de obra para el sector público y privado.</p>
+      <h2 class="title fade d1">Nuestros servicios</h2>
+      <p class="subtitle fade d2">Soluciones integrales en construcción, rehabilitación y supervisión para el sector público y privado.</p>
     </div>
     <div class="srv-grid">
-      <div class="srv fade d1">
+      <div class="srv-card fade d1">
+        <span class="srv-num">01</span>
         <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3>Construcción de obra civil</h3>
-        <p>Edificación desde cimentación hasta acabados. Proyectos residenciales, comerciales e institucionales con altos estándares técnicos.</p>
+        <div class="srv-title">Construcción de obra civil</div>
+        <div class="srv-desc">Edificación desde cimentación hasta acabados. Proyectos residenciales, comerciales e institucionales con altos estándares técnicos.</div>
       </div>
-      <div class="srv fade d2">
+      <div class="srv-card fade d2">
+        <span class="srv-num">02</span>
         <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3>Rehabilitación de edificios</h3>
-        <p>Restauración y mejora de inmuebles: reforzamiento estructural, renovación de instalaciones y actualización normativa.</p>
+        <div class="srv-title">Rehabilitación de edificios</div>
+        <div class="srv-desc">Restauración y mejora de inmuebles existentes: reforzamiento estructural, renovación de instalaciones y actualización normativa.</div>
       </div>
-      <div class="srv fade d3">
+      <div class="srv-card fade d3">
+        <span class="srv-num">03</span>
         <div class="srv-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h3>Proyectos gubernamentales</h3>
-        <p>Amplia experiencia en licitaciones municipales, estatales y federales. Cumplimiento riguroso de normativas y entrega puntual.</p>
+        <div class="srv-title">Proyectos gubernamentales</div>
+        <div class="srv-desc">Amplia experiencia en licitaciones municipales, estatales y federales. Cumplimiento riguroso de normativas y entrega oportuna.</div>
       </div>
-      <div class="srv fade d4">
+      <div class="srv-card fade d4">
+        <span class="srv-num">04</span>
         <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h3>Supervisión de obra</h3>
-        <p>Control técnico de proyectos en ejecución: calidad, avances físico-financieros y cumplimiento de especificaciones contractuales.</p>
+        <div class="srv-title">Supervisión de obra</div>
+        <div class="srv-desc">Control técnico y seguimiento de proyectos en ejecución: verificación de calidad, avances físico-financieros y cumplimiento de especificaciones.</div>
       </div>
-      <div class="srv fade d5">
+      <div class="srv-card fade d5">
+        <span class="srv-num">05</span>
         <div class="srv-ico"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
-        <h3>Diseño arquitectónico</h3>
-        <p>Proyectos ejecutivos, planos estructurales e instalaciones. Diseño funcional adaptado a cada necesidad y presupuesto.</p>
+        <div class="srv-title">Diseño arquitectónico</div>
+        <div class="srv-desc">Proyectos ejecutivos, planos arquitectónicos, estructurales e instalaciones. Diseño funcional adaptado a cada necesidad y presupuesto.</div>
       </div>
-      <div class="srv fade d6">
+      <div class="srv-card fade d6">
+        <span class="srv-num">06</span>
         <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Mantenimiento de instalaciones</h3>
-        <p>Programas preventivos y correctivos para instalaciones eléctricas, hidráulicas y civiles. Respuesta rápida y soluciones duraderas.</p>
+        <div class="srv-title">Mantenimiento de instalaciones</div>
+        <div class="srv-desc">Programas preventivos y correctivos para instalaciones eléctricas, hidráulicas y civiles. Respuesta rápida y soluciones duraderas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORES -->
+<section id="sectores" class="section">
+  <div class="container">
+    <div class="sec-header" style="margin-bottom:3rem">
+      <span class="eyebrow fade">A quiénes servimos</span>
+      <h2 class="title fade d1">Sectores que atendemos</h2>
+      <p class="subtitle fade d2">Experiencia comprobada en distintos segmentos del mercado de la construcción.</p>
+    </div>
+    <div class="sectores-grid">
+      <div class="sector-card fade d1">
+        <div class="sector-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div>
+          <div class="sector-name">Gobierno federal y estatal</div>
+          <div class="sector-sub">Licitaciones públicas, dependencias</div>
+        </div>
+      </div>
+      <div class="sector-card fade d2">
+        <div class="sector-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div>
+          <div class="sector-name">Sector residencial</div>
+          <div class="sector-sub">Vivienda unifamiliar y conjuntos</div>
+        </div>
+      </div>
+      <div class="sector-card fade d3">
+        <div class="sector-ico"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg></div>
+        <div>
+          <div class="sector-name">Comercial e industrial</div>
+          <div class="sector-sub">Oficinas, bodegas, plantas</div>
+        </div>
+      </div>
+      <div class="sector-card fade d4">
+        <div class="sector-ico"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <div>
+          <div class="sector-name">Educación y cultura</div>
+          <div class="sector-sub">Escuelas, teatros, centros</div>
+        </div>
+      </div>
+      <div class="sector-card fade d5">
+        <div class="sector-ico"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div>
+          <div class="sector-name">Salud e infraestructura</div>
+          <div class="sector-sub">Clínicas, centros de salud</div>
+        </div>
+      </div>
+      <div class="sector-card fade d6">
+        <div class="sector-ico"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div>
+          <div class="sector-name">Vialidad y urbanización</div>
+          <div class="sector-sub">Calles, banquetas, drenaje</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PROYECTOS -->
-<section id="proyectos">
+<section id="proyectos" class="section">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-header">
       <span class="eyebrow fade">Nuestro trabajo</span>
-      <h2 class="sec fade d1">Proyectos destacados</h2>
-      <p class="sec-sub fade d2">Una muestra representativa de los proyectos que hemos desarrollado con éxito en Chiapas.</p>
+      <h2 class="title fade d1">Proyectos destacados</h2>
+      <p class="subtitle fade d2">Una muestra representativa del trabajo que hemos desarrollado con éxito en Chiapas.</p>
     </div>
     <div class="proy-grid">
-      <div class="proy fade d1">
-        <div class="proy-img a">
+      <div class="proy-card fade d1">
+        <div class="proy-img c1">
           <div class="proy-ghost"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-          <span class="proy-yr">2023</span>
+          <div class="proy-overlay"><span class="proy-overlay-txt">Ver detalles</span></div>
+          <span class="proy-badge">2023</span>
         </div>
         <div class="proy-body">
-          <h3>Rehabilitación Teatro Emilio Rabasa</h3>
-          <p>Restauración integral de instalaciones eléctricas, hidráulicas y acabados del recinto cultural, preservando su valor histórico.</p>
+          <div class="proy-tag">Obra pública · Cultura</div>
+          <div class="proy-name">Rehabilitación Teatro Emilio Rabasa</div>
+          <div class="proy-desc">Restauración integral de instalaciones eléctricas, hidráulicas y acabados del recinto cultural, preservando su valor histórico.</div>
         </div>
       </div>
-      <div class="proy fade d2">
-        <div class="proy-img b">
+      <div class="proy-card fade d2">
+        <div class="proy-img c2">
           <div class="proy-ghost"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div>
-          <span class="proy-yr">2022</span>
+          <div class="proy-overlay"><span class="proy-overlay-txt">Ver detalles</span></div>
+          <span class="proy-badge">2022</span>
         </div>
         <div class="proy-body">
-          <h3>Obra civil sector gobierno</h3>
-          <p>Construcción de módulo administrativo de dos niveles para dependencia estatal, con proyecto ejecutivo, estructura y acabados de oficinas.</p>
+          <div class="proy-tag">Licitación pública · Gobierno</div>
+          <div class="proy-name">Obra civil sector gobierno</div>
+          <div class="proy-desc">Construcción de módulo administrativo de dos niveles para dependencia estatal con proyecto ejecutivo completo.</div>
         </div>
       </div>
-      <div class="proy fade d3">
-        <div class="proy-img c">
+      <div class="proy-card fade d3">
+        <div class="proy-img c3">
           <div class="proy-ghost"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <span class="proy-yr">2024</span>
+          <div class="proy-overlay"><span class="proy-overlay-txt">Ver detalles</span></div>
+          <span class="proy-badge">2024</span>
         </div>
         <div class="proy-body">
-          <h3>Proyecto residencial Los Laureles</h3>
-          <p>Desarrollo de conjunto residencial con 12 unidades habitacionales y áreas comunes en Tuxtla Gutiérrez, entregado en tiempo y forma.</p>
+          <div class="proy-tag">Proyecto privado · Residencial</div>
+          <div class="proy-name">Proyecto residencial Los Laureles</div>
+          <div class="proy-desc">Conjunto residencial de 12 unidades habitacionales y áreas comunes en Tuxtla Gutiérrez, entregado en tiempo y forma.</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta-band">
+  <div class="container">
+    <div class="cta-band-inner fade">
+      <div class="cta-band-text">
+        <h3>¿Tiene un proyecto en mente?</h3>
+        <p>Cuéntenos los detalles y le enviaremos una propuesta técnica sin costo ni compromiso en menos de 48 horas.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="#contacto" class="btn btn-navy">Solicitar cotización</a>
+        <a href="https://wa.me/529611210362" target="_blank" rel="noopener" class="btn btn-gold-outline">Escribir por WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- POR QUÉ ELEGIRNOS -->
-<section id="porque">
+<section id="porque" class="section">
   <div class="container">
-    <div class="sec-head" style="text-align:center;margin-bottom:3.5rem">
-      <span class="eyebrow fade" style="justify-content:center">Nuestra diferencia</span>
-      <h2 class="sec light fade d1" style="text-align:center;max-width:600px;margin:0 auto .9rem">¿Por qué elegir BAMA?</h2>
-      <p class="sec-sub fade d2" style="text-align:center;margin:0 auto;color:rgba(255,255,255,.46)">Cada proyecto es una oportunidad de demostrar por qué somos la elección correcta en Chiapas.</p>
+    <div class="sec-header" style="margin-bottom:3rem">
+      <span class="eyebrow fade">Nuestra diferencia</span>
+      <h2 class="title fade d1">¿Por qué elegir BAMA?</h2>
+      <p class="subtitle fade d2">Cada proyecto demuestra por qué somos la elección correcta para su obra en Chiapas.</p>
     </div>
     <div class="pq-grid">
-      <div class="pq fade d1">
+      <div class="pq-card fade d1">
+        <div class="pq-num">01</div>
         <div class="pq-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Empresa legalmente constituida</h3>
-        <p>Registro vigente ante IMSS, SAT y organismos de contratación pública. Documentación en regla para cualquier licitación.</p>
+        <div class="pq-title">Empresa legalmente constituida</div>
+        <div class="pq-text">Registro ante IMSS, SAT y organismos de contratación pública. Documentación en regla para cualquier proceso de licitación.</div>
       </div>
-      <div class="pq fade d2">
+      <div class="pq-card fade d2">
         <div class="pq-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h3>Entrega en tiempo y forma</h3>
-        <p>Programa de obra detallado con hitos claros. Control de avances y reportes periódicos para cumplir fechas pactadas.</p>
+        <div class="pq-num">02</div>
+        <div class="pq-title">Entrega en tiempo y forma</div>
+        <div class="pq-text">Programa de obra con hitos claros. Control de avances y reportes para cumplir las fechas pactadas sin excepciones.</div>
       </div>
-      <div class="pq fade d3">
+      <div class="pq-card fade d3">
+        <div class="pq-num">03</div>
         <div class="pq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <h3>Precios competitivos y transparentes</h3>
-        <p>Presupuestos detallados sin costos ocultos. Optimización de recursos sin comprometer la calidad técnica.</p>
+        <div class="pq-title">Precios competitivos</div>
+        <div class="pq-text">Presupuestos detallados sin costos ocultos. Optimización de recursos sin comprometer la calidad técnica ni los materiales.</div>
       </div>
-      <div class="pq fade d4">
+      <div class="pq-card fade d4">
+        <div class="pq-num">04</div>
         <div class="pq-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>Equipo técnico calificado</h3>
-        <p>Ingenieros y arquitectos con cédula profesional, residentes experimentados y cuadrillas especializadas por tipo de trabajo.</p>
+        <div class="pq-title">Equipo técnico calificado</div>
+        <div class="pq-text">Ingenieros y arquitectos con cédula profesional, residentes experimentados y cuadrillas especializadas por tipo de trabajo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="section">
+  <div class="container">
+    <div class="sec-header" style="text-align:center;margin-bottom:3.5rem">
+      <span class="eyebrow fade" style="justify-content:center">Opiniones</span>
+      <h2 class="title light fade d1" style="text-align:center;max-width:460px;margin:0 auto .9rem">Lo que dicen nuestros clientes</h2>
+      <p class="subtitle light fade d2" style="text-align:center;margin:0 auto">La confianza de nuestros clientes es el mejor respaldo de nuestro trabajo.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade d1">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="testi-quote">Excelente empresa. Cumplieron en tiempo y presupuesto, algo que no es fácil de encontrar en el sector de la construcción. Los recomiendo ampliamente para licitaciones de gobierno.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">RM</div>
+          <div>
+            <div class="testi-name">Roberto Morales</div>
+            <div class="testi-role">Director de Obras Públicas Municipal</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade d2">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="testi-quote">BAMA realizó la rehabilitación de nuestras instalaciones con un nivel de detalle y profesionalismo que superó nuestras expectativas. Comunicación excelente en todo momento.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">AL</div>
+          <div>
+            <div class="testi-name">Ana Luz Espinoza</div>
+            <div class="testi-role">Administradora, Centro Educativo Chiapas</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade d3">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="testi-quote">Construyeron nuestro proyecto residencial con la calidad y el rigor que esperábamos. El equipo siempre estuvo disponible para resolver dudas y el resultado final fue impecable.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">JV</div>
+          <div>
+            <div class="testi-name">Jorge Valdivieso</div>
+            <div class="testi-role">Desarrollador inmobiliario privado</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto">
+<section id="contacto" class="section">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-header">
       <span class="eyebrow fade">Hablemos</span>
-      <h2 class="sec fade d1">Contacto</h2>
-      <p class="sec-sub fade d2">Cuéntenos sobre su proyecto y le enviaremos una cotización sin compromiso.</p>
+      <h2 class="title fade d1">Contáctenos</h2>
+      <p class="subtitle fade d2">Cuéntenos sobre su proyecto. Le enviaremos una propuesta sin compromiso.</p>
     </div>
     <div class="cta-grid">
-      <div class="cta-info fade d1">
-        <h3>Información de contacto</h3>
-        <div class="info-row">
-          <div class="i-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div class="i-txt"><strong>Dirección</strong><span>Grijalva 1, Fracc. Los Laureles<br>Tuxtla Gutiérrez, Chiapas, México</span></div>
+      <div class="fade d1">
+        <div class="cta-info-title">Información de contacto</div>
+        <div class="info-item">
+          <div class="info-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><span class="info-lbl">Dirección</span><span class="info-val">Grijalva 1, Fracc. Los Laureles<br>Tuxtla Gutiérrez, Chiapas, México</span></div>
         </div>
-        <div class="info-row">
-          <div class="i-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.14l3-.07a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.63a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.04z"/></svg></div>
-          <div class="i-txt"><strong>Teléfono</strong><span>961 121 0362</span></div>
+        <div class="info-item">
+          <div class="info-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.14l3-.07a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.63a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.04z"/></svg></div>
+          <div><span class="info-lbl">Teléfono</span><span class="info-val">961 121 0362</span></div>
         </div>
-        <div class="info-row">
-          <div class="i-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div class="i-txt"><strong>Correo electrónico</strong><span>contacto@bama.com.mx</span></div>
+        <div class="info-item">
+          <div class="info-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><span class="info-lbl">Correo electrónico</span><span class="info-val">contacto@bama.com.mx</span></div>
         </div>
+        <div class="divider-h"></div>
         <a href="https://wa.me/529611210362" target="_blank" rel="noopener" class="btn-wa">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Escribir por WhatsApp
         </a>
       </div>
       <div class="cta-form fade d2">
-        <h3>Solicite una cotización</h3>
+        <div class="form-title">Solicite una cotización</div>
+        <div class="form-sub">Responderemos en menos de 24 horas hábiles.</div>
         <form id="contactForm" onsubmit="handleSubmit(event)">
-          <div class="fg">
-            <label for="nombre">Nombre completo</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez García" required>
+          <div class="form-row">
+            <div class="fg"><label for="nombre">Nombre completo</label><input type="text" id="nombre" placeholder="Juan Pérez García" required></div>
+            <div class="fg"><label for="empresa">Empresa u organización</label><input type="text" id="empresa" placeholder="Constructora ABC"></div>
           </div>
-          <div class="fg">
-            <label for="empresa">Empresa u organización</label>
-            <input type="text" id="empresa" name="empresa" placeholder="Ej. Constructora ABC / Gobierno Municipal">
+          <div class="form-row">
+            <div class="fg"><label for="email">Correo electrónico</label><input type="email" id="email" placeholder="su@correo.com" required></div>
+            <div class="fg"><label for="tel">Teléfono</label><input type="tel" id="tel" placeholder="961 000 0000"></div>
           </div>
-          <div class="fg">
-            <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" placeholder="su@correo.com" required>
-          </div>
-          <div class="fg">
-            <label for="mensaje">Descripción del proyecto</label>
-            <textarea id="mensaje" name="mensaje" placeholder="Describa el tipo de obra, ubicación y cualquier detalle relevante para su cotización." required></textarea>
-          </div>
-          <button type="submit" class="btn-send" id="submitBtn">Enviar solicitud</button>
+          <div class="fg"><label for="mensaje">Descripción del proyecto</label><textarea id="mensaje" placeholder="Describa el tipo de obra, ubicación y cualquier detalle relevante." required></textarea></div>
+          <button type="submit" class="btn-submit" id="submitBtn">Enviar solicitud</button>
         </form>
       </div>
     </div>
@@ -576,20 +1101,15 @@ h2.sec.light{color:#fff}
 <!-- FOOTER -->
 <footer id="footer">
   <div class="container">
-    <div class="ft-top">
-      <div class="ft-brand">
-        <a href="#hero" class="logo">BAMA<span>Proyectos y Obras Civiles</span></a>
-        <p>Empresa constructora con presencia en Chiapas, especializada en obra civil para el sector público y privado.</p>
-        <div class="socials">
-          <a href="#" class="sl" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="#" class="sl" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="rgba(255,255,255,.45)" stroke="none"/></svg>
-          </a>
-          <a href="#" class="sl" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo-main">BAMA</div>
+        <span class="ft-logo-sub">Proyectos y Obras Civiles</span>
+        <p class="ft-tagline">Empresa constructora con presencia en Chiapas, especializada en obra civil para el sector público y privado.</p>
+        <div class="ft-socials">
+          <a href="#" class="ft-social" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="ft-social" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+          <a href="#" class="ft-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
         </div>
       </div>
       <div class="ft-col">
@@ -597,6 +1117,7 @@ h2.sec.light{color:#fff}
         <ul>
           <li><a href="#hero">Inicio</a></li>
           <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#proceso">Proceso</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
           <li><a href="#contacto">Contacto</a></li>
@@ -610,10 +1131,11 @@ h2.sec.light{color:#fff}
           <li><a href="#servicios">Proyectos de gobierno</a></li>
           <li><a href="#servicios">Supervisión de obra</a></li>
           <li><a href="#servicios">Diseño arquitectónico</a></li>
+          <li><a href="#servicios">Mantenimiento</a></li>
         </ul>
       </div>
     </div>
-    <div class="ft-bot">
+    <div class="ft-bottom">
       <span>© 2025 BAMA Proyectos y Obras Civiles. Todos los derechos reservados.</span>
       <span>Tuxtla Gutiérrez, Chiapas, México</span>
     </div>
@@ -621,50 +1143,87 @@ h2.sec.light{color:#fff}
 </footer>
 
 <script>
-// Navbar scroll
-const nav = document.getElementById('nav');
+// Progress bar
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const s = document.documentElement;
+  bar.style.width = (s.scrollTop / (s.scrollHeight - s.clientHeight) * 100) + '%';
+}, {passive:true});
+
+// Navbar
+const nav = document.getElementById('navbar');
 window.addEventListener('scroll', () => nav.classList.toggle('solid', window.scrollY > 60), {passive:true});
 
 // Mobile nav
 const ham = document.getElementById('ham');
-const navLinks = document.getElementById('navLinks');
-ham.addEventListener('click', () => navLinks.classList.toggle('open'));
-function closeNav(){ navLinks.classList.remove('open') }
+const mNav = document.getElementById('mobileNav');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  mNav.classList.toggle('open');
+  document.body.style.overflow = mNav.classList.contains('open') ? 'hidden' : '';
+});
+function closeNav(){
+  ham.classList.remove('open');
+  mNav.classList.remove('open');
+  document.body.style.overflow = '';
+}
 
-// IntersectionObserver fade-in
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target) } });
-}, {threshold:.12, rootMargin:'0px 0px -36px 0px'});
-document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+// Fade in
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+}, {threshold:.1, rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+setTimeout(() => document.querySelectorAll('#hero .fade').forEach(el => el.classList.add('in')), 100);
 
-// Trigger hero fades immediately
-setTimeout(() => {
-  document.querySelectorAll('#hero .fade').forEach(el => el.classList.add('in'));
-}, 100);
+// Counter animation
+function animCount(el, target, dur=1500){
+  let t0 = null;
+  const step = ts => {
+    if(!t0) t0 = ts;
+    const p = Math.min((ts-t0)/dur, 1);
+    const e = 1-Math.pow(1-p,3);
+    el.textContent = Math.round(e*target);
+    if(p<1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const cObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      // avoid double-counting on page sections with same counter
+      if(!e.target.dataset.done){
+        e.target.dataset.done='1';
+        animCount(e.target, parseInt(e.target.dataset.target));
+      }
+      cObs.unobserve(e.target);
+    }
+  });
+}, {threshold:.5});
+document.querySelectorAll('.counter').forEach(el => cObs.observe(el));
 
-// Form submit
+// Form
 function handleSubmit(e){
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
-  btn.textContent = 'Enviando...';
+  btn.textContent = 'Enviando…';
   btn.disabled = true;
   setTimeout(() => {
-    btn.textContent = '¡Mensaje enviado correctamente!';
-    btn.style.background = '#2a9d60';
+    btn.textContent = '✓ Mensaje enviado correctamente';
+    btn.style.background = '#1a6b36';
     e.target.reset();
     setTimeout(() => {
       btn.textContent = 'Enviar solicitud';
       btn.style.background = '';
       btn.disabled = false;
-    }, 3500);
+    }, 4000);
   }, 900);
 }
 
-// Smooth scroll (Safari fallback)
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e){
     const t = document.querySelector(this.getAttribute('href'));
-    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}) }
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});closeNav()}
   });
 });
 </script>

@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAMA Proyectos y Obras Civiles | Tuxtla Gutiérrez, Chiapas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans',sans-serif;color:#2d2d2d;background:#fff;line-height:1.6}
+
+:root{
+  --navy:#1a2b4a;
+  --navy-dk:#111e35;
+  --gold:#c8a84b;
+  --gold-lt:#d4b86a;
+  --white:#ffffff;
+  --gray:#f5f6f8;
+  --mid:#666;
+  --t:.3s ease;
+}
+
+/* ── UTILS ── */
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.65rem;
+  font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;
+}
+.eyebrow::before{content:'';display:block;width:36px;height:2px;background:var(--gold)}
+
+h2.sec{
+  font-family:'Montserrat',sans-serif;font-size:clamp(1.7rem,4vw,2.5rem);
+  font-weight:800;color:var(--navy);line-height:1.15;margin-bottom:1.1rem;
+}
+h2.sec.light{color:#fff}
+.sec-sub{font-size:1.02rem;color:var(--mid);max-width:560px;line-height:1.75}
+
+.fade{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.fade.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+
+/* ── BUTTONS ── */
+.btn-gold{
+  font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;padding:.85rem 1.9rem;
+  background:var(--gold);color:var(--navy);border:none;border-radius:2px;
+  cursor:pointer;text-decoration:none;display:inline-block;
+  transition:background var(--t),transform var(--t);
+}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px)}
+
+.btn-ghost{
+  font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;padding:.85rem 1.9rem;
+  background:transparent;color:#fff;border:2px solid rgba(255,255,255,.38);
+  border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;
+  transition:border-color var(--t),color var(--t),transform var(--t);
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+/* ── NAVBAR ── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:1.2rem 0;transition:background var(--t),box-shadow var(--t),padding var(--t);
+}
+#nav.solid{background:var(--navy);box-shadow:0 2px 20px rgba(0,0,0,.28);padding:.8rem 0}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+
+.logo{
+  font-family:'Montserrat',sans-serif;font-size:1.7rem;font-weight:800;
+  color:var(--gold);letter-spacing:.04em;text-decoration:none;line-height:1;
+}
+.logo span{display:block;font-size:.52rem;font-weight:600;color:rgba(255,255,255,.6);
+  letter-spacing:.16em;text-transform:uppercase;margin-top:3px}
+
+.nav-links{display:flex;align-items:center;gap:2.1rem;list-style:none}
+.nav-links a{
+  font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.82);
+  text-decoration:none;transition:color var(--t);
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{
+  font-family:'Montserrat',sans-serif;font-size:.76rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;padding:.55rem 1.3rem;
+  background:var(--gold);color:var(--navy);border-radius:2px;text-decoration:none;
+  transition:background var(--t),transform var(--t);
+}
+.nav-cta:hover{background:var(--gold-lt);transform:translateY(-1px)}
+
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:var(--t)}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  background:
+    linear-gradient(140deg,rgba(17,30,53,.97) 0%,rgba(26,43,74,.92) 65%,rgba(26,43,74,.85) 100%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8a84b' fill-opacity='.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+  display:flex;align-items:center;position:relative;overflow:hidden;
+}
+#hero::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;height:72px;
+  background:#fff;clip-path:polygon(0 100%,100% 100%,100% 35%,0 100%);
+}
+.hero-content{padding:7.5rem 0 5.5rem;max-width:740px;position:relative;z-index:1}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.75rem;
+  font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;
+}
+.hero-tag::before{content:'';display:block;width:38px;height:2px;background:var(--gold)}
+.hero-h1{
+  font-family:'Montserrat',sans-serif;font-size:clamp(2.1rem,5.5vw,3.8rem);
+  font-weight:800;color:#fff;line-height:1.1;margin-bottom:1.4rem;letter-spacing:-.01em;
+}
+.hero-h1 em{font-style:normal;color:var(--gold)}
+.hero-p{font-size:clamp(.95rem,1.8vw,1.12rem);color:rgba(255,255,255,.68);max-width:500px;line-height:1.78;margin-bottom:2.5rem}
+.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap}
+.hero-stats{
+  display:flex;gap:2.75rem;margin-top:3.75rem;padding-top:1.75rem;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+.stat-n{font-family:'Montserrat',sans-serif;font-size:1.9rem;font-weight:800;color:var(--gold);line-height:1}
+.stat-l{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+
+/* ── NOSOTROS ── */
+#nosotros{padding:6rem 0;background:#fff}
+.nos-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.nos-text p{color:var(--mid);line-height:1.8;margin-bottom:.9rem}
+.nos-cards{display:flex;flex-direction:column;gap:1.1rem}
+.valor{
+  display:flex;align-items:flex-start;gap:1.2rem;padding:1.4rem 1.5rem;
+  border-left:3px solid var(--gold);background:var(--gray);border-radius:0 4px 4px 0;
+  transition:transform var(--t),box-shadow var(--t);
+}
+.valor:hover{transform:translateX(4px);box-shadow:4px 4px 18px rgba(26,43,74,.08)}
+.ico{
+  width:42px;height:42px;background:var(--navy);border-radius:3px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.ico svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.valor h3{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
+.valor p{font-size:.85rem;color:var(--mid);line-height:1.6}
+
+/* ── SERVICIOS ── */
+#servicios{padding:6rem 0;background:var(--gray)}
+.sec-head{margin-bottom:3.25rem}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.srv{
+  background:#fff;padding:1.85rem 1.65rem;border-radius:4px;
+  border-bottom:3px solid transparent;
+  transition:border-color var(--t),transform var(--t),box-shadow var(--t);
+}
+.srv:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 30px rgba(26,43,74,.1)}
+.srv-ico{
+  width:50px;height:50px;background:var(--navy);border-radius:3px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;
+}
+.srv-ico svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.srv h3{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.55rem}
+.srv p{font-size:.84rem;color:var(--mid);line-height:1.65}
+
+/* ── PROYECTOS ── */
+#proyectos{padding:6rem 0;background:#fff}
+.proy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.proy{border-radius:4px;overflow:hidden;box-shadow:0 4px 18px rgba(26,43,74,.07);transition:transform var(--t),box-shadow var(--t)}
+.proy:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(26,43,74,.14)}
+.proy-img{height:215px;position:relative;overflow:hidden}
+.proy-img.a{background:linear-gradient(135deg,#1a2b4a 0%,#243755 55%,#2d4470 100%)}
+.proy-img.b{background:linear-gradient(135deg,#111e35 0%,#1a2b4a 55%,#1f3358 100%)}
+.proy-img.c{background:linear-gradient(135deg,#1d3060 0%,#1a2b4a 55%,#152340 100%)}
+.proy-img::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(200,168,75,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,.1) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.proy-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold)}
+.proy-yr{
+  position:absolute;top:.85rem;right:.85rem;
+  font-family:'Montserrat',sans-serif;font-size:.67rem;font-weight:700;
+  letter-spacing:.14em;color:var(--gold);background:rgba(17,30,53,.85);
+  padding:.28rem .7rem;border-radius:2px;
+}
+.proy-ghost{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.12}
+.proy-ghost svg{width:76px;height:76px;stroke:var(--gold);fill:none;stroke-width:1}
+.proy-body{padding:1.4rem 1.5rem;background:#fff}
+.proy-body h3{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.45rem;line-height:1.35}
+.proy-body p{font-size:.83rem;color:var(--mid);line-height:1.6}
+
+/* ── PORQUE ── */
+#porque{padding:6rem 0;background:var(--navy);position:relative;overflow:hidden}
+#porque::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(200,168,75,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,.04) 1px,transparent 1px);
+  background-size:38px 38px;
+}
+.pq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.75rem;position:relative;z-index:1}
+.pq{text-align:center;padding:1.85rem 1.1rem}
+.pq-ico{
+  width:62px;height:62px;border:2px solid var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;
+}
+.pq-ico svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.pq h3{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.55rem}
+.pq p{font-size:.83rem;color:rgba(255,255,255,.52);line-height:1.65}
+
+/* ── CONTACTO ── */
+#contacto{padding:6rem 0;background:var(--gray)}
+.cta-grid{display:grid;grid-template-columns:1fr 1.45fr;gap:4rem;align-items:start}
+.cta-info h3{font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:1.85rem}
+.info-row{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.4rem}
+.i-ico{
+  width:38px;height:38px;background:var(--navy);border-radius:3px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.i-ico svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.i-txt strong{display:block;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:.22rem}
+.i-txt span{font-size:.88rem;color:var(--mid)}
+
+.btn-wa{
+  display:flex;align-items:center;justify-content:center;gap:.7rem;
+  width:100%;padding:.95rem 1.4rem;background:#25d366;color:#fff;
+  font-family:'Montserrat',sans-serif;font-size:.86rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  border-radius:3px;margin-top:2rem;transition:background var(--t),transform var(--t);
+}
+.btn-wa:hover{background:#1da851;transform:translateY(-2px)}
+.btn-wa svg{width:21px;height:21px;fill:currentColor;flex-shrink:0}
+
+.cta-form{background:#fff;padding:2.4rem;border-radius:4px;box-shadow:0 4px 22px rgba(26,43,74,.07)}
+.cta-form h3{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:1.65rem}
+.fg{margin-bottom:1.15rem}
+.fg label{display:block;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:.45rem}
+.fg input,.fg textarea{
+  width:100%;padding:.82rem .95rem;border:1.5px solid #dde1e8;border-radius:2px;
+  font-family:'Open Sans',sans-serif;font-size:.88rem;color:#2d2d2d;
+  background:#fff;outline:none;transition:border-color var(--t);
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg textarea{resize:vertical;min-height:125px}
+.btn-send{
+  width:100%;padding:.95rem;background:var(--navy);color:#fff;
+  font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:2px;
+  cursor:pointer;transition:background var(--t),transform var(--t);
+}
+.btn-send:hover{background:var(--navy-dk);transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+#footer{background:var(--navy-dk);padding:3.5rem 0 1.75rem}
+.ft-top{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;
+  padding-bottom:2.25rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1.75rem;
+}
+.ft-brand p{font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.72;max-width:275px;margin-top:.85rem}
+.ft-col h4{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:.55rem}
+.ft-col a{font-size:.84rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color var(--t)}
+.ft-col a:hover{color:var(--gold)}
+
+.socials{display:flex;gap:.65rem;margin-top:1.2rem}
+.sl{
+  width:34px;height:34px;border:1px solid rgba(255,255,255,.18);border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color var(--t),background var(--t);
+}
+.sl:hover{border-color:var(--gold);background:rgba(200,168,75,.1)}
+.sl svg{width:15px;height:15px;transition:var(--t)}
+.sl:hover svg{stroke:var(--gold)}
+
+.ft-bot{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.28)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .srv-grid{grid-template-columns:repeat(2,1fr)}
+  .proy-grid{grid-template-columns:repeat(2,1fr)}
+  .pq-grid{grid-template-columns:repeat(2,1fr)}
+  .nos-grid{grid-template-columns:1fr;gap:3rem}
+  .ft-top{grid-template-columns:1fr 1fr}
+  .ft-brand{grid-column:1/-1}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-links.open{
+    display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;
+    background:var(--navy-dk);align-items:center;justify-content:center;gap:2rem;z-index:999;
+  }
+  .nav-links.open a{font-size:1.05rem}
+  .nav-links.open .nav-cta{font-size:1rem;padding:.75rem 2rem}
+  .srv-grid,.proy-grid{grid-template-columns:1fr}
+  .cta-grid{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr}
+  .hero-stats{gap:1.4rem}
+  .stat-n{font-size:1.6rem}
+  .ft-bot{flex-direction:column;gap:.4rem;text-align:center}
+}
+@media(max-width:480px){
+  .pq-grid{grid-template-columns:1fr}
+  .hero-ctas{flex-direction:column}
+  .btn-gold,.btn-ghost{text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .fade{opacity:1;transform:none;transition:none}
+  *{transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-in">
+      <a href="#hero" class="logo">BAMA<span>Proyectos y Obras Civiles</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero"      onclick="closeNav()">Inicio</a></li>
+        <li><a href="#nosotros"  onclick="closeNav()">Nosotros</a></li>
+        <li><a href="#servicios" onclick="closeNav()">Servicios</a></li>
+        <li><a href="#proyectos" onclick="closeNav()">Proyectos</a></li>
+        <li><a href="#contacto"  onclick="closeNav()">Contacto</a></li>
+        <li><a href="#contacto"  class="nav-cta" onclick="closeNav()">Contáctanos</a></li>
+      </ul>
+      <button class="hamburger" id="ham" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag fade">Tuxtla Gutiérrez, Chiapas</div>
+      <h1 class="hero-h1 fade d1">Construimos con<br><em>calidad</em> y compromiso</h1>
+      <p class="hero-p fade d2">Más de 10 años desarrollando proyectos de obra civil en Chiapas, con excelencia técnica y cumplimiento puntual en cada etapa.</p>
+      <div class="hero-ctas fade d3">
+        <a href="#proyectos" class="btn-gold">Ver proyectos</a>
+        <a href="#contacto"  class="btn-ghost">Solicitar cotización</a>
+      </div>
+      <div class="hero-stats fade d4">
+        <div><div class="stat-n">+10</div><div class="stat-l">Años de experiencia</div></div>
+        <div><div class="stat-n">+80</div><div class="stat-l">Proyectos concluidos</div></div>
+        <div><div class="stat-n">100%</div><div class="stat-l">Compromiso</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="container">
+    <div class="nos-grid">
+      <div class="nos-text">
+        <span class="eyebrow fade">Quiénes somos</span>
+        <h2 class="sec fade d1">Una empresa comprometida con Chiapas</h2>
+        <p class="fade d2">BAMA Proyectos y Obras Civiles es una empresa constructora con más de una década de experiencia en el desarrollo de infraestructura pública y privada en el estado de Chiapas.</p>
+        <p class="fade d3">Contamos con ingenieros, arquitectos y técnicos especializados, comprometidos con la entrega de proyectos de alto estándar dentro de los plazos y presupuestos acordados.</p>
+        <p class="fade d4">Nuestra trayectoria en licitaciones de gobierno y proyectos privados nos permite adaptarnos a las necesidades específicas de cada cliente, garantizando transparencia y resultados verificables.</p>
+      </div>
+      <div class="nos-cards">
+        <div class="valor fade d1">
+          <div class="ico">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <h3>Experiencia comprobada</h3>
+            <p>Más de 10 años ejecutando proyectos de obra civil en Chiapas, con historial sólido en licitaciones públicas y contratos privados.</p>
+          </div>
+        </div>
+        <div class="valor fade d2">
+          <div class="ico">
+            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <div>
+            <h3>Estándares de calidad</h3>
+            <p>Materiales certificados y procesos supervisados para garantizar obras duraderas conforme a normativa técnica vigente.</p>
+          </div>
+        </div>
+        <div class="valor fade d3">
+          <div class="ico">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h3>Compromiso con el cliente</h3>
+            <p>Comunicación clara, reportes periódicos y cumplimiento de plazos. Su satisfacción es el criterio de éxito de cada obra.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow fade">Lo que hacemos</span>
+      <h2 class="sec fade d1">Nuestros servicios</h2>
+      <p class="sec-sub fade d2">Soluciones integrales en construcción, rehabilitación y supervisión de obra para el sector público y privado.</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv fade d1">
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3>Construcción de obra civil</h3>
+        <p>Edificación desde cimentación hasta acabados. Proyectos residenciales, comerciales e institucionales con altos estándares técnicos.</p>
+      </div>
+      <div class="srv fade d2">
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Rehabilitación de edificios</h3>
+        <p>Restauración y mejora de inmuebles: reforzamiento estructural, renovación de instalaciones y actualización normativa.</p>
+      </div>
+      <div class="srv fade d3">
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3>Proyectos gubernamentales</h3>
+        <p>Amplia experiencia en licitaciones municipales, estatales y federales. Cumplimiento riguroso de normativas y entrega puntual.</p>
+      </div>
+      <div class="srv fade d4">
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Supervisión de obra</h3>
+        <p>Control técnico de proyectos en ejecución: calidad, avances físico-financieros y cumplimiento de especificaciones contractuales.</p>
+      </div>
+      <div class="srv fade d5">
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+        <h3>Diseño arquitectónico</h3>
+        <p>Proyectos ejecutivos, planos estructurales e instalaciones. Diseño funcional adaptado a cada necesidad y presupuesto.</p>
+      </div>
+      <div class="srv fade d6">
+        <div class="srv-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Mantenimiento de instalaciones</h3>
+        <p>Programas preventivos y correctivos para instalaciones eléctricas, hidráulicas y civiles. Respuesta rápida y soluciones duraderas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow fade">Nuestro trabajo</span>
+      <h2 class="sec fade d1">Proyectos destacados</h2>
+      <p class="sec-sub fade d2">Una muestra representativa de los proyectos que hemos desarrollado con éxito en Chiapas.</p>
+    </div>
+    <div class="proy-grid">
+      <div class="proy fade d1">
+        <div class="proy-img a">
+          <div class="proy-ghost"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <span class="proy-yr">2023</span>
+        </div>
+        <div class="proy-body">
+          <h3>Rehabilitación Teatro Emilio Rabasa</h3>
+          <p>Restauración integral de instalaciones eléctricas, hidráulicas y acabados del recinto cultural, preservando su valor histórico.</p>
+        </div>
+      </div>
+      <div class="proy fade d2">
+        <div class="proy-img b">
+          <div class="proy-ghost"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div>
+          <span class="proy-yr">2022</span>
+        </div>
+        <div class="proy-body">
+          <h3>Obra civil sector gobierno</h3>
+          <p>Construcción de módulo administrativo de dos niveles para dependencia estatal, con proyecto ejecutivo, estructura y acabados de oficinas.</p>
+        </div>
+      </div>
+      <div class="proy fade d3">
+        <div class="proy-img c">
+          <div class="proy-ghost"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <span class="proy-yr">2024</span>
+        </div>
+        <div class="proy-body">
+          <h3>Proyecto residencial Los Laureles</h3>
+          <p>Desarrollo de conjunto residencial con 12 unidades habitacionales y áreas comunes en Tuxtla Gutiérrez, entregado en tiempo y forma.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ ELEGIRNOS -->
+<section id="porque">
+  <div class="container">
+    <div class="sec-head" style="text-align:center;margin-bottom:3.5rem">
+      <span class="eyebrow fade" style="justify-content:center">Nuestra diferencia</span>
+      <h2 class="sec light fade d1" style="text-align:center;max-width:600px;margin:0 auto .9rem">¿Por qué elegir BAMA?</h2>
+      <p class="sec-sub fade d2" style="text-align:center;margin:0 auto;color:rgba(255,255,255,.46)">Cada proyecto es una oportunidad de demostrar por qué somos la elección correcta en Chiapas.</p>
+    </div>
+    <div class="pq-grid">
+      <div class="pq fade d1">
+        <div class="pq-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Empresa legalmente constituida</h3>
+        <p>Registro vigente ante IMSS, SAT y organismos de contratación pública. Documentación en regla para cualquier licitación.</p>
+      </div>
+      <div class="pq fade d2">
+        <div class="pq-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Entrega en tiempo y forma</h3>
+        <p>Programa de obra detallado con hitos claros. Control de avances y reportes periódicos para cumplir fechas pactadas.</p>
+      </div>
+      <div class="pq fade d3">
+        <div class="pq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Precios competitivos y transparentes</h3>
+        <p>Presupuestos detallados sin costos ocultos. Optimización de recursos sin comprometer la calidad técnica.</p>
+      </div>
+      <div class="pq fade d4">
+        <div class="pq-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Equipo técnico calificado</h3>
+        <p>Ingenieros y arquitectos con cédula profesional, residentes experimentados y cuadrillas especializadas por tipo de trabajo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow fade">Hablemos</span>
+      <h2 class="sec fade d1">Contacto</h2>
+      <p class="sec-sub fade d2">Cuéntenos sobre su proyecto y le enviaremos una cotización sin compromiso.</p>
+    </div>
+    <div class="cta-grid">
+      <div class="cta-info fade d1">
+        <h3>Información de contacto</h3>
+        <div class="info-row">
+          <div class="i-ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="i-txt"><strong>Dirección</strong><span>Grijalva 1, Fracc. Los Laureles<br>Tuxtla Gutiérrez, Chiapas, México</span></div>
+        </div>
+        <div class="info-row">
+          <div class="i-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.14l3-.07a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.63a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.04z"/></svg></div>
+          <div class="i-txt"><strong>Teléfono</strong><span>961 121 0362</span></div>
+        </div>
+        <div class="info-row">
+          <div class="i-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="i-txt"><strong>Correo electrónico</strong><span>contacto@bama.com.mx</span></div>
+        </div>
+        <a href="https://wa.me/529611210362" target="_blank" rel="noopener" class="btn-wa">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+      <div class="cta-form fade d2">
+        <h3>Solicite una cotización</h3>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="fg">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez García" required>
+          </div>
+          <div class="fg">
+            <label for="empresa">Empresa u organización</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Ej. Constructora ABC / Gobierno Municipal">
+          </div>
+          <div class="fg">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="su@correo.com" required>
+          </div>
+          <div class="fg">
+            <label for="mensaje">Descripción del proyecto</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Describa el tipo de obra, ubicación y cualquier detalle relevante para su cotización." required></textarea>
+          </div>
+          <button type="submit" class="btn-send" id="submitBtn">Enviar solicitud</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <a href="#hero" class="logo">BAMA<span>Proyectos y Obras Civiles</span></a>
+        <p>Empresa constructora con presencia en Chiapas, especializada en obra civil para el sector público y privado.</p>
+        <div class="socials">
+          <a href="#" class="sl" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="sl" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="rgba(255,255,255,.45)" stroke="none"/></svg>
+          </a>
+          <a href="#" class="sl" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Construcción civil</a></li>
+          <li><a href="#servicios">Rehabilitación</a></li>
+          <li><a href="#servicios">Proyectos de gobierno</a></li>
+          <li><a href="#servicios">Supervisión de obra</a></li>
+          <li><a href="#servicios">Diseño arquitectónico</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2025 BAMA Proyectos y Obras Civiles. Todos los derechos reservados.</span>
+      <span>Tuxtla Gutiérrez, Chiapas, México</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('solid', window.scrollY > 60), {passive:true});
+
+// Mobile nav
+const ham = document.getElementById('ham');
+const navLinks = document.getElementById('navLinks');
+ham.addEventListener('click', () => navLinks.classList.toggle('open'));
+function closeNav(){ navLinks.classList.remove('open') }
+
+// IntersectionObserver fade-in
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target) } });
+}, {threshold:.12, rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+// Trigger hero fades immediately
+setTimeout(() => {
+  document.querySelectorAll('#hero .fade').forEach(el => el.classList.add('in'));
+}, 100);
+
+// Form submit
+function handleSubmit(e){
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = '¡Mensaje enviado correctamente!';
+    btn.style.background = '#2a9d60';
+    e.target.reset();
+    setTimeout(() => {
+      btn.textContent = 'Enviar solicitud';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3500);
+  }, 900);
+}
+
+// Smooth scroll (Safari fallback)
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e){
+    const t = document.querySelector(this.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}) }
+  });
+});
+</script>
+</body>
+</html>
